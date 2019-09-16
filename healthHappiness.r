@@ -37,6 +37,12 @@ cor.test(hapScore$Health..Life.Expectancy., hapScore$Happiness.Score)
 ggplot(data=hapScore, aes(x=Health..Life.Expectancy., y=Happiness.Score, size=Economy..GDP.per.Capita., alpha=0.1)) +
   geom_point(aes(col="Red")) + 
   geom_smooth(method=loess, se=FALSE, color="darkorchid4")
+#This is a little sloppy so I am going to clean up the graph.
+ggplot(data=hapScore, aes(x=Health..Life.Expectancy., y=Happiness.Score, size=Economy..GDP.per.Capita.)) + labs(title = "Happiness, Health, and GDP/Capita", x = "Health Score", y = "Happiness Score", size = "GDP/Capita") +
+   geom_point(aes(col="Red"), show.legend = FALSE, alpha=0.3) + 
+   geom_smooth(method=loess, se=FALSE, color="darkorchid4")
+#This plot shows a positive correlation that seems to bottom out at around a 0.25 Health Score.
+#The size parameter lets you look at the relationship between GDP per Capita and Happiness.
 
 #Now let's see a linear regression data model
 linearModel <- lm(hapScore$Happiness.Score~hapScore$Health..Life.Expectancy.)
